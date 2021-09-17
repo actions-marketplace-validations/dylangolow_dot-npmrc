@@ -1,4 +1,4 @@
-name: 'Dot-npmrc Generator'
+name: 'Dot-npmrc Generator v2'
 description: 'Generate a dot-npmrc file with given data.'
 branding:
   icon: anchor
