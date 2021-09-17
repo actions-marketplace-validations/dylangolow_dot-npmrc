@@ -9,7 +9,7 @@ inputs:
     required: true
     default: '.'
   org:
-    description: 'The orgnization ID'
+    description: 'The organization ID'
     required: false
   registry:
     description: 'The npm registry URL'
