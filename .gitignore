@@ -105,3 +105,4 @@ dist
 
 # TypeScript build files
 /lib
+/.idea

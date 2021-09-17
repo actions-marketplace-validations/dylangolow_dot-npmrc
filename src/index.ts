@@ -18,6 +18,7 @@ const main = (): void => {
     const registryInput = core.getInput('registry');
     const registry = registryInput === '' ? defaultRegistry : registryInput;
     const token = core.getInput('token');
+    const addOrgPrefixFlag = core.getInput('addOrgPrefix');
     // TODO(tianhaoz95): change this to getBooleanInput once
     // it becomes available.
     const overwrite = core.getInput('overwrite') === 'true';
@@ -25,13 +26,14 @@ const main = (): void => {
     const fullPath = path.join(root, filename);
     const includeRegistry: boolean = (org !== '');
     const includeAuth: boolean = (token !== '');
+    const addOrgPrefix: boolean = (addOrgPrefixFlag !== '');
     if (overwrite) {
         core.info('Will overwrite .npmrc instead of appending.');
         clearFile(fullPath);
     }
     if (includeRegistry) {
         core.info('Both org and registry are found. Will add the registry line.');
-        const registryLine: string = `@${org}:registry=https://${registry}\n`;
+        const registryLine: string = !addOrgPrefix ?  `registry=https://${registry}\n` : `@${org}:registry=https://${registry}\n`;
         addLine(fullPath, registryLine);
     }
     if (includeAuth) {
